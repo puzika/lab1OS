@@ -6,7 +6,7 @@
 
 pthread_mutex_t mutex; 
 pthread_cond_t cond1; 
-int ready 1;
+int ready = 1;
 
 void* produce() {
    while (true) {
@@ -29,7 +29,7 @@ void consume() {
    while (true) {
       pthread_mutex_lock (&mutex);
 
-      if (ready 0) pthread_cond_wait(&cond1, &mutex);
+      if (ready == 0) pthread_cond_wait(&cond1, &mutex);
 
       ready = 0;
       printf("consumer received event\n"); pthread_mutex_unlock (&mutex);
